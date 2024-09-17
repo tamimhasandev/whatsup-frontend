@@ -1,3 +1,3 @@
-const host = 'http://whatsup.tamimhasan.com';
+const host = 'https://whatsup.tamimhasan.com';
 
 export default host;
