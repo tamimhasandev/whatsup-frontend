@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import { toast } from 'react-toastify';
+import host from '../../env';
 import Button from './Button';
 
 export default function SaveUpdates({ newItems, changedItems }) {
   async function saveHandler() {
     try {
-      const res = await fetch(import.meta.env.VITE_REACT_HOST, {
+      const res = await fetch(host, {
         method: 'POST',
         body: JSON.stringify([...newItems, ...changedItems]),
         headers: {
