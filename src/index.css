@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .list {
+    box-shadow: 0 0 2px 0px #322f2f;
+  }
+}
+
+:root {
+  @apply bg-slate-900;
+}
