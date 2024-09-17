@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import host from '../../env';
 import Updates from './Updates';
 
 export default function Recent() {
@@ -10,7 +11,7 @@ export default function Recent() {
     setLoading(true);
     (async function () {
       try {
-        const res = await fetch(import.meta.env.VITE_REACT_HOST + '/recent');
+        const res = await fetch(host + '/recent');
         const data = await res.json();
         setLinks(data);
         setLoading(false);

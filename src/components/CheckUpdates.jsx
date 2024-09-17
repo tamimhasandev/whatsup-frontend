@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BlinkBlur } from 'react-loading-indicators';
+import host from '../../env';
 import Button from './Button';
 import SaveUpdates from './SaveUpdates';
 import Updates from './Updates';
@@ -13,7 +14,7 @@ export default function CheckUpdates() {
   async function checkHandler() {
     try {
       setLoading(true);
-      const res = await fetch(import.meta.env.VITE_REACT_HOST + '/updates');
+      const res = await fetch(host + '/updates');
       const { changedItems, newItems } = await res.json();
       setChanged(changedItems);
       setNewItems(newItems);
