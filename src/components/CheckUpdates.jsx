@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BlinkBlur } from 'react-loading-indicators';
-import host from '../../env';
+import getHost from '../utils/getHost';
 import Button from './Button';
 import SaveUpdates from './SaveUpdates';
 import Updates from './Updates';
@@ -14,7 +14,7 @@ export default function CheckUpdates() {
   async function checkHandler() {
     try {
       setLoading(true);
-      const res = await fetch(host + '/updates');
+      const res = await fetch(getHost() + '/updates');
       const { changedItems, newItems } = await res.json();
       setChanged(changedItems);
       setNewItems(newItems);
@@ -30,15 +30,25 @@ export default function CheckUpdates() {
         <Button text="Check Updates" onClick={checkHandler} />
         <SaveUpdates newItems={newItems} changedItems={changed} />
       </div>
-      <div className="flex gap-x-10 w-full mt-7">
+      <div className="md:flex gap-x-10 w-full mt-7">
         {loading ? (
           <>
             <BlinkBlur color="#fff" size="medium" text="" textColor="" />
           </>
         ) : (
           <>
-            <Updates width="50%" title="New" links={newItems} />
-            <Updates width="50%" title="Modified" links={changed} />
+            <Updates
+              width="50%"
+              title="New collections"
+              links={newItems}
+              headingClasses="!text-[#22c55e]"
+            />
+            <Updates
+              width="50%"
+              title="Modified collections"
+              links={changed}
+              headingClasses="!text-[#fb923c]"
+            />
           </>
         )}
       </div>

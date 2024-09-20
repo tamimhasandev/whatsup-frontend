@@ -5,7 +5,7 @@ import TotalProducts from './components/TotalProducts';
 
 function App() {
   return (
-    <div className="container m-auto py-4">
+    <div className="container px-2 md:px-auto m-auto py-4">
       <ToastContainer />
       <TotalProducts />
       <CheckUpdates />

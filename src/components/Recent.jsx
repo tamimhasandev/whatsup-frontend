@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-import host from '../../env';
-import Updates from './Updates';
+import { useEffect, useState } from "react";
+import Updates from "./Updates";
+import { BlinkBlur } from "react-loading-indicators";
+import getHost from "../utils/getHost";
 
 export default function Recent() {
   const [loading, setLoading] = useState(false);
@@ -11,7 +12,7 @@ export default function Recent() {
     setLoading(true);
     (async function () {
       try {
-        const res = await fetch(host + '/recent');
+        const res = await fetch(getHost() + "/recent");
         const data = await res.json();
         setLinks(data);
         setLoading(false);
@@ -24,7 +25,9 @@ export default function Recent() {
   return (
     <>
       {error && error}
-      {loading || (
+      {loading ? (
+        <BlinkBlur color="#fff" size="medium" text="" textColor="" />
+      ) : (
         <Updates className="border-none" title="Recently added" links={links} />
       )}
     </>

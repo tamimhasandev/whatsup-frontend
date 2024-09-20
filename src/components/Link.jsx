@@ -18,7 +18,7 @@ export default function Link({ link, index }) {
   return (
     <li
       style={{ border: copyColor && `1px solid ${copyColor}` }}
-      className="list p-2 rounded-md flex gap-3 items-center"
+      className="list p-2 rounded-md flex gap-3 items-center border border-transparent"
     >
       <span className="dark:text-[#fcfcfc] text-sm font-medium pl-2">
         {index + 1}.
