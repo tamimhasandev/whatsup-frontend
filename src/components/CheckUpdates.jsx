@@ -11,13 +11,29 @@ export default function CheckUpdates() {
 
   const [loading, setLoading] = useState(false);
 
+  /**
+   *
+   * @param {Array} link
+   */
+  function linkFilter(link) {
+    return link.filter(
+      (link) =>
+        !link.loc.includes('gb') &&
+        !link.loc.includes('ram') &&
+        !link.loc.includes('rom')
+    );
+  }
+
   async function checkHandler() {
     try {
       setLoading(true);
       const res = await fetch(getHost() + '/updates');
       const { changedItems, newItems } = await res.json();
-      setChanged(changedItems);
-      setNewItems(newItems);
+      const changedItemsFiltered = linkFilter(changedItems);
+      const newItemsFiltered = linkFilter(newItems);
+
+      setChanged(changedItemsFiltered);
+      setNewItems(newItemsFiltered);
       setLoading(false);
     } catch (error) {
       console.log(error);
