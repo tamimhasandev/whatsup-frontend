@@ -3,6 +3,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { CheckUpdates, Recent } from './components';
 import TotalProducts from './components/TotalProducts';
 
+// App closing alert
+window.onbeforeunload = function (e) {
+  return true;
+};
+
 function App() {
   return (
     <div className="container px-2 md:px-auto m-auto py-4">
