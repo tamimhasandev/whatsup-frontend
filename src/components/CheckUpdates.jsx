@@ -15,13 +15,17 @@ export default function CheckUpdates() {
    *
    * @param {Array} link
    */
-  function linkFilter(link) {
-    return link.filter(
-      (link) =>
-        !link.loc.includes('gb') &&
-        !link.loc.includes('ram') &&
-        !link.loc.includes('rom')
-    );
+  function linkFilter(links) {
+    return links
+      .filter(
+        (link) =>
+          !link.loc.includes('gb') &&
+          !link.loc.includes('ram') &&
+          !link.loc.includes('rom')
+      )
+      .sort((a, b) => {
+        return a < b ? -1 : 1;
+      });
   }
 
   async function checkHandler() {
