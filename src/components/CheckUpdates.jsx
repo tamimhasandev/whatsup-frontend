@@ -24,7 +24,7 @@ export default function CheckUpdates() {
           !link.loc.includes('rom')
       )
       .sort((a, b) => {
-        return a < b ? -1 : 1;
+        return a.loc < b.loc ? -1 : 1;
       });
   }
 
